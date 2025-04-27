@@ -1,0 +1,15 @@
+http:
+  middlewares:
+    auth:
+      basicAuth:
+        users:
+          - "admin:$apr1$g2l.6f3t$X4FOpLuu2.o.n65vsq9hK."
+
+  routers:
+    traefik-dashboard:
+      rule: "PathPrefix(`/dashboard`) || PathPrefix(`/api`)"
+      entryPoints:
+        - web
+      service: api@internal
+      middlewares:
+        - auth
