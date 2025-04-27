@@ -1,0 +1,20 @@
+# Ignorar volúmenes y configuraciones locales
+volumes/
+.env
+*.log
+
+# Archivos temporales
+*.tmp
+*.swp
+*.bak
+*.old
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Configuraciones de editor
+.vscode/
+.idea/
+*.code-workspace
+
