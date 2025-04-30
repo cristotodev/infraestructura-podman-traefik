@@ -1,0 +1,18 @@
+http:
+  routers:
+    traefik-source:
+      rule: "Host(`traefik.local`)"
+      entryPoints:
+        - websecure
+      service: api@internal
+      middlewares:
+        - auth
+
+tls:
+  certificatesResolvers:
+    myresolver:
+      acme:
+        email: "cristoto@dev.com"
+        storage: "/etc/traefik/acme.json"
+        httpChallenge:
+          entryPoint: web

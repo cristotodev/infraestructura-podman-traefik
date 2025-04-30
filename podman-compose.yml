@@ -8,7 +8,12 @@ services:
       - "--api.insecure=false"
       - "--providers.file.directory=/etc/traefik/config"
       - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.myresolver.acme.email=cristoto@dev.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/etc/traefik/acme.json"
     ports:
+      - "4433:443"
       - "8081:80"
     volumes:
       - "/var/run/podman/podman.sock:/var/run/docker.sock:ro"
